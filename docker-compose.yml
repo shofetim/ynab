@@ -1,0 +1,16 @@
+ynab:
+  image: shofetim/ynab
+  command: wine .wine/drive_c/Program\ Files\ \(x86\)/YNAB\ 4/YNAB\ 4.exe
+  volumes:
+   # Mount the X11 socket so that we can share graphics with the host system
+   - /tmp/.X11-unix:/tmp/.X11-unix
+   #- ~/.Xauthority:/home/docker/.Xauthority
+   # Map the YNAB folder on the host to the YNAB folder in the container
+   #- ~/YNAB:/home/docker/YNAB
+  environment:
+   # Pass through the hosts DISPLAY env setting
+   - DISPLAY
+   # Sometimes YNAB wants to render a pop-up/pop-under that kills the
+   # process due to a problem with OpenGL (most likely). Setting this
+   # may make rendering slower, but it makes it more reliable.
+   - LIBGL_ALWAYS_SOFTWARE=1
