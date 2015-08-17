@@ -4,9 +4,9 @@ ynab:
   volumes:
    # Mount the X11 socket so that we can share graphics with the host system
    - /tmp/.X11-unix:/tmp/.X11-unix
-   #- ~/.Xauthority:/home/docker/.Xauthority
+   - ~/.Xauthority:/home/docker/.Xauthority
    # Map the YNAB folder on the host to the YNAB folder in the container
-   #- ~/YNAB:/home/docker/YNAB
+   - ~/YNAB:/home/docker/YNAB
   environment:
    # Pass through the hosts DISPLAY env setting
    - DISPLAY
@@ -14,3 +14,4 @@ ynab:
    # process due to a problem with OpenGL (most likely). Setting this
    # may make rendering slower, but it makes it more reliable.
    - LIBGL_ALWAYS_SOFTWARE=1
+  net: host
