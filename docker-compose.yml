@@ -7,6 +7,8 @@ ynab:
    - ~/.Xauthority:/home/docker/.Xauthority
    # Map the YNAB folder on the host to the YNAB folder in the container
    - ~/YNAB:/home/docker/YNAB
+   # Map the Downloads directory on the host, into the container
+   - ~/Downloads:/home/docker/Downloads
   environment:
    # Pass through the hosts DISPLAY env setting
    - DISPLAY
